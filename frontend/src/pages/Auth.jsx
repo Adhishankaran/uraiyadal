@@ -87,16 +87,16 @@ const Auth = () => {
                 />
             </div>
 
-            {/* Absolute Title & Branding */}
-            <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-yellow-500 flex items-center justify-center text-white font-black text-4xl shadow-lg border-4 border-white">
-                    U
-                </div>
+          {/* Absolute Title & Branding */}
+          <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-yellow-500 flex items-center justify-center text-white font-black text-4xl shadow-lg border-4 border-white">
+               U
+          </div>
 
-                <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
-                    URAIYADAL
-                </h1>
-            </div>
+    <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
+        URAIYADAL
+    </h1>
+</div>
 
             <div
                 className={`auth-container bg-white dark:bg-slate-900 shadow-2xl relative w-[900px] max-w-full min-h-[550px] overflow-hidden rounded-[30px] z-10 ${
