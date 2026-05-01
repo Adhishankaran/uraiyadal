@@ -69,19 +69,19 @@ const Auth = () => {
             {/* Giant Watermark Background */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-5">
                 <img
-                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
-                    alt="Watermark"
-                    className="w-[600px] md:w-[800px] object-contain"
+                 src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                 alt="Watermark"
+                className="w-[600px] md:w-[800px] object-contain"
                 />
             </div>
 
             {/* Absolute Title & Logo */}
             <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-0 gap-6">
                 <img
-                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
-                    alt="Logo"
-                    className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-40"
-                />
+                  src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                  alt="Logo"
+                  className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-40"
+                 />
                 <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
                     URAIYADAL
                 </h1>
