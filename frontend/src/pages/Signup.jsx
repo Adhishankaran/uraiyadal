@@ -7,7 +7,6 @@ import { supabase } from '../supabaseClient';
 const Signup = () => {
     const [formData, setFormData] = useState({ name: '', username: '', password: '' });
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
