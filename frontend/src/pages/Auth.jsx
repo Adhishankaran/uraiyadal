@@ -80,7 +80,7 @@ const Auth = () => {
                 <img
                     src={`${import.meta.env.BASE_URL}logo.jpeg`}
                     alt="Logo"
-                    className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-40"
+                    className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-100"
                 />
                 <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
                     URAIYADAL
