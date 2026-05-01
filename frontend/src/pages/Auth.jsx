@@ -82,6 +82,7 @@ const Auth = () => {
                alt="Logo"
                className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
              />
+          </div>    
 
     <h1 className="text-6xl md:text-8xl font-black text-yellow-500 tracking-widest">
         URAIYADAL
