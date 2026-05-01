@@ -76,16 +76,17 @@ const Auth = () => {
             </div>
 
             {/* Absolute Title & Logo */}
-            <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-0 gap-6">
-                <img
-                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
-                    alt="Logo"
-                    className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-100"
-                />
-                <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
-                    URAIYADAL
-                </h1>
-            </div>
+           <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
+              <img
+                   src="/uraiyadal/logo.jpeg"
+                   alt="Logo"
+                   className="w-20 h-20 md:w-28 md:h-28 object-contain"
+              />
+
+    <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
+        URAIYADAL
+    </h1>
+</div>
 
             <div className={`auth-container bg-white dark:bg-slate-900 shadow-2xl relative w-[900px] max-w-full min-h-[550px] overflow-hidden rounded-[30px] z-10 ${isRightPanelActive ? "right-panel-active" : ""}`}>
 
