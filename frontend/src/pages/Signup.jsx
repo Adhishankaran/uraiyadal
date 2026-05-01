@@ -11,20 +11,30 @@ const Signup = () => {
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            const { data } = await API.post('/auth/register', formData);
-            toast.success('Account created successfully!');
-            login(data);
-            navigate('/');
-        } catch (error) {
-            toast.error(error.response?.data?.message || 'Signup failed');
-        } finally {
-            setLoading(false);
-        }
-    };
+    const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    setSignupLoading(true);
+
+    try {
+        const { error } = await supabase.from('users').insert([
+            {
+                name: signupData.name,
+                username: signupData.username,
+                password: signupData.password,
+            }
+        ]);
+
+        if (error) throw error;
+
+        toast.success('Account created successfully!');
+        setIsRightPanelActive(false);
+
+    } catch (error) {
+        toast.error(error.message || 'Signup failed');
+    } finally {
+        setSignupLoading(false);
+    }
+  };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-900 dark:to-slate-950 p-4">
