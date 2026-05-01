@@ -13,21 +13,33 @@ const Login = () => {
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            const { data } = await API.post('/auth/login', formData);
-            login(data);
-            toast.success('Welcome back!');
-            navigate('/');
-        } catch (error) {
-            toast.error(error.response?.data?.message || 'Login failed');
-        } finally {
-            setLoading(false);
-        }
-    };
+    const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    setLoginLoading(true);
 
+    try {
+        const { data, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('username', loginData.username)
+            .eq('password', loginData.password)
+            .single();
+
+        if (error || !data) {
+            throw new Error('Invalid username or password');
+        }
+
+        localStorage.setItem('user', JSON.stringify(data));
+
+        toast.success('Welcome back!');
+        navigate('/');
+
+    } catch (error) {
+        toast.error(error.message || 'Login failed');
+    } finally {
+        setLoginLoading(false);
+    }
+};
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-300 to-primary-500 dark:from-primary-900 dark:to-slate-950 p-4">
             <motion.div 
