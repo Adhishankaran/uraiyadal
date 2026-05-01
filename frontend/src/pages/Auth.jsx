@@ -7,18 +7,12 @@ import { useAuth } from '../context/AuthContext';
 const Auth = () => {
     const [isRightPanelActive, setIsRightPanelActive] = useState(false);
 
-    const [loginData, setLoginData] = useState({
-        username: '',
-        password: '',
-    });
-
-    const [signupData, setSignupData] = useState({
-        name: '',
-        username: '',
-        password: '',
-    });
-
+    // Login State
+    const [loginData, setLoginData] = useState({ username: '', password: '' });
     const [loginLoading, setLoginLoading] = useState(false);
+
+    // Signup State
+    const [signupData, setSignupData] = useState({ name: '', username: '', password: '' });
     const [signupLoading, setSignupLoading] = useState(false);
 
     const { login } = useAuth();
@@ -26,27 +20,22 @@ const Auth = () => {
     const location = useLocation();
 
     useEffect(() => {
-        setIsRightPanelActive(location.pathname === '/signup');
+        if (location.pathname === '/signup') {
+            setIsRightPanelActive(true);
+        } else {
+            setIsRightPanelActive(false);
+        }
     }, [location]);
 
-    const handleLoginChange = (e) => {
-        setLoginData({
-            ...loginData,
-            [e.target.name]: e.target.value,
-        });
-    };
+    const handleLoginChange = (e) =>
+        setLoginData({ ...loginData, [e.target.name]: e.target.value });
 
-    const handleSignupChange = (e) => {
-        setSignupData({
-            ...signupData,
-            [e.target.name]: e.target.value,
-        });
-    };
+    const handleSignupChange = (e) =>
+        setSignupData({ ...signupData, [e.target.name]: e.target.value });
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setLoginLoading(true);
-
         try {
             const { data } = await API.post('/auth/login', loginData);
             login(data);
@@ -62,11 +51,10 @@ const Auth = () => {
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         setSignupLoading(true);
-
         try {
             const { data } = await API.post('/auth/register', signupData);
-            login(data);
             toast.success('Account created successfully!');
+            login(data);
             navigate('/');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Signup failed');
@@ -87,22 +75,30 @@ const Auth = () => {
                 />
             </div>
 
-          {/* Absolute Title & Branding */}
-          <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-yellow-500 flex items-center justify-center text-white font-black text-4xl shadow-lg border-4 border-white">
-               U
-          </div>
+            {/* Absolute Title & Logo */}
+           <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
+             <img
+               src="/uraiyadal/logo.jpeg"
+               alt="Logo"
+               className="w-20 h-20 md:w-28 md:h-28 object-contain border-2 border-yellow-500 rounded-full shadow-lg bg-white"
+             />
 
     <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
         URAIYADAL
     </h1>
 </div>
+            {/* Absolute Title */}
+            <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-yellow-500 flex items-center justify-center text-white font-black text-3xl shadow-lg">
+                    U
+                </div>
 
-            <div
-                className={`auth-container bg-white dark:bg-slate-900 shadow-2xl relative w-[900px] max-w-full min-h-[550px] overflow-hidden rounded-[30px] z-10 ${
-                    isRightPanelActive ? 'right-panel-active' : ''
-                }`}
-            >
+                <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
+                    URAIYADAL
+                </h1>
+            </div>
+
+            <div className={`auth-container bg-white dark:bg-slate-900 shadow-2xl relative w-[900px] max-w-full min-h-[550px] overflow-hidden rounded-[30px] z-10 ${isRightPanelActive ? "right-panel-active" : ""}`}>
 
                 {/* Sign Up Container */}
                 <div className="form-container sign-up-container">
@@ -114,46 +110,46 @@ const Auth = () => {
                             Registration
                         </h1>
 
-                        <div className="w-full mb-4">
+                        <div className="w-full mb-4 relative">
                             <input
-                                type="text"
                                 name="name"
-                                required
-                                placeholder="Full Name"
-                                value={signupData.name}
-                                onChange={handleSignupChange}
-                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white"
-                            />
-                        </div>
-
-                        <div className="w-full mb-4">
-                            <input
                                 type="text"
-                                name="username"
                                 required
-                                placeholder="Username"
-                                value={signupData.username}
+                                value={signupData.name}
+                                placeholder="Full Name"
+                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white transition-all"
                                 onChange={handleSignupChange}
-                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white"
                             />
                         </div>
 
-                        <div className="w-full mb-6">
+                        <div className="w-full mb-4 relative">
                             <input
-                                type="password"
-                                name="password"
+                                name="username"
+                                type="text"
                                 required
-                                placeholder="Password"
-                                value={signupData.password}
+                                value={signupData.username}
+                                placeholder="Username"
+                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white transition-all"
                                 onChange={handleSignupChange}
-                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white"
+                            />
+                        </div>
+
+                        <div className="w-full mb-6 relative">
+                            <input
+                                name="password"
+                                type="password"
+                                required
+                                value={signupData.password}
+                                placeholder="Password"
+                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white transition-all"
+                                onChange={handleSignupChange}
                             />
                         </div>
 
                         <button
                             type="submit"
                             disabled={signupLoading}
-                            className="rounded-full border border-yellow-500 bg-yellow-500 text-white text-sm font-bold py-3 px-12 uppercase tracking-wider hover:scale-105 transition-transform disabled:opacity-50"
+                            className="rounded-full border border-yellow-500 bg-yellow-500 text-white text-sm font-bold py-3 px-12 uppercase tracking-wider transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 shadow-lg shadow-yellow-500/30"
                         >
                             {signupLoading ? 'Registering...' : 'Register'}
                         </button>
@@ -170,27 +166,27 @@ const Auth = () => {
                             Login
                         </h1>
 
-                        <div className="w-full mb-4">
+                        <div className="w-full mb-4 relative">
                             <input
-                                type="text"
                                 name="username"
+                                type="text"
                                 required
-                                placeholder="Username"
                                 value={loginData.username}
+                                placeholder="Username"
+                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white transition-all"
                                 onChange={handleLoginChange}
-                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white"
                             />
                         </div>
 
-                        <div className="w-full mb-2">
+                        <div className="w-full mb-2 relative">
                             <input
-                                type="password"
                                 name="password"
+                                type="password"
                                 required
-                                placeholder="Password"
                                 value={loginData.password}
+                                placeholder="Password"
+                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white transition-all"
                                 onChange={handleLoginChange}
-                                className="bg-slate-100 dark:bg-slate-800 border-none px-4 py-3 rounded-lg w-full outline-none focus:ring-2 focus:ring-yellow-400 dark:text-white"
                             />
                         </div>
 
@@ -204,30 +200,27 @@ const Auth = () => {
                         <button
                             type="submit"
                             disabled={loginLoading}
-                            className="rounded-full border border-yellow-500 bg-yellow-500 text-white text-sm font-bold py-3 px-12 uppercase tracking-wider hover:scale-105 transition-transform disabled:opacity-50"
+                            className="rounded-full border border-yellow-500 bg-yellow-500 text-white text-sm font-bold py-3 px-12 uppercase tracking-wider transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 shadow-lg shadow-yellow-500/30"
                         >
                             {loginLoading ? 'Logging in...' : 'Login'}
                         </button>
                     </form>
                 </div>
 
-                {/* Overlay */}
+                {/* Overlay Container */}
                 <div className="overlay-container">
                     <div className="overlay">
-
                         <div className="overlay-panel overlay-left">
                             <h1 className="font-bold text-4xl text-white mb-4">
                                 Welcome Back!
                             </h1>
-
                             <p className="text-yellow-50 text-sm font-light leading-relaxed tracking-wide mb-8 px-6">
                                 Already have an account? Login with your details to start chatting instantly.
                             </p>
-
                             <button
                                 type="button"
+                                className="rounded-full border-2 border-white bg-transparent text-white text-sm font-bold py-3 px-12 uppercase tracking-wider transition-transform hover:scale-105 active:scale-95"
                                 onClick={() => setIsRightPanelActive(false)}
-                                className="rounded-full border-2 border-white bg-transparent text-white text-sm font-bold py-3 px-12 uppercase tracking-wider hover:scale-105 transition-transform"
                             >
                                 Login
                             </button>
@@ -237,20 +230,17 @@ const Auth = () => {
                             <h1 className="font-bold text-4xl text-white mb-4">
                                 Hello, Welcome!
                             </h1>
-
                             <p className="text-yellow-50 text-sm font-light leading-relaxed tracking-wide mb-8 px-6">
-                                Don't have an account? Join Uraiyadal and connect instantly.
+                                Don't have an account? Join Uraiyadal and connect with friends immediately.
                             </p>
-
                             <button
                                 type="button"
+                                className="rounded-full border-2 border-white bg-transparent text-white text-sm font-bold py-3 px-12 uppercase tracking-wider transition-transform hover:scale-105 active:scale-95"
                                 onClick={() => setIsRightPanelActive(true)}
-                                className="rounded-full border-2 border-white bg-transparent text-white text-sm font-bold py-3 px-12 uppercase tracking-wider hover:scale-105 transition-transform"
                             >
                                 Register
                             </button>
                         </div>
-
                     </div>
                 </div>
 
