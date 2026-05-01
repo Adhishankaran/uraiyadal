@@ -77,11 +77,11 @@ const Auth = () => {
 
             {/* Absolute Title & Logo */}
            <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
-              <img
-                   src="/uraiyadal/logo.jpeg"
-                   alt="Logo"
-                   className="w-20 h-20 md:w-28 md:h-28 object-contain"
-              />
+             <img
+               src="/uraiyadal/logo.jpeg"
+               alt="Logo"
+               className="w-20 h-20 md:w-28 md:h-28 object-contain border-2 border-yellow-500 rounded-full shadow-lg bg-white"
+             />
 
     <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
         URAIYADAL
