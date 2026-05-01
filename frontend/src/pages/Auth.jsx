@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import API from '../services/api';
-import toast from 'react-hot-toast';
+import { supabase } from '../supabaseClient';
 import { useAuth } from '../context/AuthContext';
 
 const Auth = () => {
