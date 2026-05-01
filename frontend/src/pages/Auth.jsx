@@ -67,33 +67,23 @@ const Auth = () => {
         <div className="min-h-screen flex items-center justify-center bg-yellow-50 dark:bg-slate-950 p-4 font-['Outfit']">
 
             {/* Giant Watermark Background */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-10">
                 <img
                     src={`${import.meta.env.BASE_URL}logo.jpeg`}
                     alt="Watermark"
-                    className="w-[600px] md:w-[800px] object-contain"
+                    className="w-[600px] md:w-[800px] object-contain mix-blend-multiply"
                 />
             </div>
 
             {/* Absolute Title & Logo */}
-           <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
-             <img
-               src="/uraiyadal/logo.jpeg"
-               alt="Logo"
-               className="w-20 h-20 md:w-28 md:h-28 object-contain border-2 border-yellow-500 rounded-full shadow-lg bg-white"
-             />
-
-    <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
-        URAIYADAL
-    </h1>
-</div>
-            {/* Absolute Title */}
             <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-10 gap-6">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-yellow-500 flex items-center justify-center text-white font-black text-3xl shadow-lg">
-                    U
-                </div>
+                <img
+                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                    alt="Logo"
+                    className="w-20 h-20 md:w-28 md:h-28 object-contain border-2 border-yellow-500 rounded-full shadow-lg mix-blend-multiply"
+                />
 
-                <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
+                <h1 className="text-6xl md:text-8xl font-black text-yellow-500 tracking-widest drop-shadow-md">
                     URAIYADAL
                 </h1>
             </div>
