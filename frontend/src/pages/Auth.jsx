@@ -69,19 +69,19 @@ const Auth = () => {
             {/* Giant Watermark Background */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-5">
                 <img
-                 src={`${import.meta.env.BASE_URL}logo.jpeg`}
-                 alt="Watermark"
-                className="w-[600px] md:w-[800px] object-contain"
+                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                    alt="Watermark"
+                    className="w-[600px] md:w-[800px] object-contain"
                 />
             </div>
 
             {/* Absolute Title & Logo */}
             <div className="absolute top-8 left-0 right-0 flex items-center justify-center z-0 gap-6">
                 <img
-                  src={`${import.meta.env.BASE_URL}logo.jpeg`}
-                  alt="Logo"
-                  className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-40"
-                 />
+                    src={`${import.meta.env.BASE_URL}logo.jpeg`}
+                    alt="Logo"
+                    className="w-16 h-16 md:w-24 md:h-24 object-contain opacity-40"
+                />
                 <h1 className="text-6xl md:text-8xl font-black text-yellow-500/40 tracking-widest drop-shadow-sm">
                     URAIYADAL
                 </h1>
@@ -91,8 +91,13 @@ const Auth = () => {
 
                 {/* Sign Up Container */}
                 <div className="form-container sign-up-container">
-                    <form onSubmit={handleSignupSubmit} className="bg-white dark:bg-slate-900 flex items-center justify-center flex-col px-12 h-full text-center">
-                        <h1 className="font-bold text-3xl mb-6 text-slate-800 dark:text-white">Registration</h1>
+                    <form
+                        onSubmit={handleSignupSubmit}
+                        className="bg-white dark:bg-slate-900 flex items-center justify-center flex-col px-12 h-full text-center"
+                    >
+                        <h1 className="font-bold text-3xl mb-6 text-slate-800 dark:text-white">
+                            Registration
+                        </h1>
 
                         <div className="w-full mb-4 relative">
                             <input
@@ -142,8 +147,13 @@ const Auth = () => {
 
                 {/* Sign In Container */}
                 <div className="form-container sign-in-container">
-                    <form onSubmit={handleLoginSubmit} className="bg-white dark:bg-slate-900 flex items-center justify-center flex-col px-12 h-full text-center">
-                        <h1 className="font-bold text-3xl mb-6 text-slate-800 dark:text-white">Login</h1>
+                    <form
+                        onSubmit={handleLoginSubmit}
+                        className="bg-white dark:bg-slate-900 flex items-center justify-center flex-col px-12 h-full text-center"
+                    >
+                        <h1 className="font-bold text-3xl mb-6 text-slate-800 dark:text-white">
+                            Login
+                        </h1>
 
                         <div className="w-full mb-4 relative">
                             <input
@@ -169,7 +179,10 @@ const Auth = () => {
                             />
                         </div>
 
-                        <a href="#" className="text-sm text-yellow-600 dark:text-yellow-400 hover:underline mb-6">
+                        <a
+                            href="#"
+                            className="text-sm text-yellow-600 dark:text-yellow-400 hover:underline mb-6"
+                        >
                             Forgot Password?
                         </a>
 
@@ -187,7 +200,9 @@ const Auth = () => {
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left">
-                            <h1 className="font-bold text-4xl text-white mb-4">Welcome Back!</h1>
+                            <h1 className="font-bold text-4xl text-white mb-4">
+                                Welcome Back!
+                            </h1>
                             <p className="text-yellow-50 text-sm font-light leading-relaxed tracking-wide mb-8 px-6">
                                 Already have an account? Login with your details to start chatting instantly.
                             </p>
@@ -201,7 +216,9 @@ const Auth = () => {
                         </div>
 
                         <div className="overlay-panel overlay-right">
-                            <h1 className="font-bold text-4xl text-white mb-4">Hello, Welcome!</h1>
+                            <h1 className="font-bold text-4xl text-white mb-4">
+                                Hello, Welcome!
+                            </h1>
                             <p className="text-yellow-50 text-sm font-light leading-relaxed tracking-wide mb-8 px-6">
                                 Don't have an account? Join Uraiyadal and connect with friends immediately.
                             </p>
