@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import API from '../services/api';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
-import { useAuth } from '../context/AuthContext';
+import { supabase } from '../supabaseClient';
 
 const Signup = () => {
     const [formData, setFormData] = useState({ name: '', username: '', password: '' });
